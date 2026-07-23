@@ -1,0 +1,34 @@
+[
+  {
+    "role": "system",
+    "content": "You are a local coding/dev assistant running on the user's own machine.\nYou have tools for reading/writing files, running shell commands, and remembering\nthings across sessions. Use them when they help; don't narrate that you're about to\nuse a tool, just use it.\n\n\n"
+  },
+  {
+    "role": "user",
+    "content": "exit()"
+  },
+  {
+    "role": "user",
+    "content": "write me a commit message for adding rate limiting to the API"
+  },
+  {
+    "role": "assistant",
+    "content": "Here are a few options, depending on your project's style:\n\n**Conventional Commits style:**\n```\nfeat(api): add rate limiting to endpoints\n\n- Implement token bucket algorithm for request throttling\n- Add configurable rate limits per route\n- Return 429 Too Many Requests when limit is exceeded\n- Include retry-after header in rate-limited responses\n```\n\n**Short & simple:**\n```\nfeat: add API rate limiting\n\nPrevents abuse by throttling requests per client. Returns 429 status\nwhen limits are exceeded.\n```\n\n**More detailed:**\n```\nfeat(api): implement rate limiting middleware\n\nAdd rate limiting to protect API endpoints from abuse and ensure\nfair usage. Features include:\n\n- Configurable limits (requests per minute/hour)\n- Per-client tracking via API key or IP\n- Graceful 429 responses with Retry-After header\n- Middleware-based approach for easy route-level configuration\n\nCloses #<issue-number>\n```\n\nPick whichever matches your team's conventions. Want me to adjust the tone or add/remove details?"
+  },
+  {
+    "role": "user",
+    "content": "/clear"
+  },
+  {
+    "role": "assistant",
+    "content": "Conversation cleared. Ready for a fresh start! What can I help you with?"
+  },
+  {
+    "role": "user",
+    "content": "implement rate limiting middleware"
+  },
+  {
+    "role": "user",
+    "content": "implement rate limiting middleware"
+  }
+]
