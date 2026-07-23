@@ -95,7 +95,7 @@ def execute_tool_call(call: dict, vector_memory: VectorMemory) -> str:
 
 
 def run_turn(llm: LLMClient, convo: ConversationMemory, vector_memory: VectorMemory,
-             user_input: str, max_tool_iterations: int = 6) -> str:
+             user_input: str, max_tool_iterations: int = 20) -> str:
     convo.add("user", user_input)
 
     messages = convo.as_list()
@@ -187,10 +187,12 @@ def start_local_servers():
     
     try:
         # Change stdout=None if you need to debug startup issues.
-        embed_proc = subprocess.Popen(embed_params, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        embed_proc = subprocess.Popen(embed_params, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, 
+                                      text=True, encoding="utf-8", errors="replace")
         server_processes.append(embed_proc)
         
-        llm_proc = subprocess.Popen(llm_params, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        llm_proc = subprocess.Popen(llm_params, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                    text=True, encoding="utf-8", errors="replace")
         server_processes.append(llm_proc)
         
         ui.system_msg("Waiting 5 seconds for servers to initialize...")

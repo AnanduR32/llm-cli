@@ -206,7 +206,7 @@ def run_shell(command: str) -> str:
     try:
         result = subprocess.run(
             command, shell=True, capture_output=True, text=True, timeout=60,
-            cwd=WORKING_ROOT,
+            cwd=WORKING_ROOT, encoding="utf-8", errors="replace"
         )
         return f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
     except Exception as e:
